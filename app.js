@@ -148,7 +148,10 @@ function createHouseholdPanel() {
     sidebar.appendChild(panel);
   }
 
-  createButton.addEventListener("click", createHousehold);
+  createButton.addEventListener("click", () => {
+  console.log("Tombol Buat household diklik");
+  createHousehold();
+});
   joinButton.addEventListener("click", joinHousehold);
 
   return panel;
