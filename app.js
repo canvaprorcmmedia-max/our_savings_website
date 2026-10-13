@@ -43,28 +43,43 @@ function showDashboard() {
   }
 }
 
-// Buat panel household tanpa mengubah isi index.html
+
 function createHouseholdPanel() {
-  if (!appScreen) return null;
+  const sidebar = document.querySelector("#appScreen .sidebar");
+  if (!sidebar) return null;
 
   let panel = document.getElementById("household-panel");
   if (panel) return panel;
 
   panel = document.createElement("section");
   panel.id = "household-panel";
-  panel.style.cssText =
-    "margin:20px 0;padding:20px;border:1px solid #ddd;border-radius:14px;";
 
-  const title = document.createElement("h2");
+  // Ikuti desain sidebar Our Savings
+  panel.style.cssText = `
+    margin: 18px 0;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 14px;
+    background: rgba(255,255,255,.06);
+    color: #f5f7f6;
+    box-sizing: border-box;
+    min-width: 0;
+  `;
+
+  const title = document.createElement("h3");
   title.textContent = "Tabungan Bersama";
+  title.style.cssText = "font-size:14px;margin:0 0 8px;";
 
   const description = document.createElement("p");
-  description.textContent =
-    "Buat ruang tabungan bersama atau gabung menggunakan kode undangan.";
+  description.textContent = "Buat atau gabung tabungan bersama.";
+  description.style.cssText =
+    "font-size:12px;line-height:1.5;opacity:.8;margin:0 0 10px;";
 
   const status = document.createElement("p");
   status.id = "household-status";
   status.textContent = "Memeriksa household...";
+  status.style.cssText =
+    "font-size:12px;line-height:1.5;overflow-wrap:anywhere;";
 
   const createButton = document.createElement("button");
   createButton.id = "create-household-button";
@@ -74,11 +89,18 @@ function createHouseholdPanel() {
   const inviteInput = document.createElement("input");
   inviteInput.id = "household-invite-input";
   inviteInput.type = "text";
-  inviteInput.placeholder = "Masukkan kode undangan";
+  inviteInput.placeholder = "Kode undangan";
   inviteInput.autocomplete = "off";
   inviteInput.maxLength = 100;
-  inviteInput.style.cssText =
-    "display:block;width:100%;box-sizing:border-box;margin:12px 0;padding:10px;";
+  inviteInput.style.cssText = `
+    width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    margin:8px 0;
+    padding:9px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:8px;
+  `;
 
   const joinButton = document.createElement("button");
   joinButton.id = "join-household-button";
@@ -87,7 +109,26 @@ function createHouseholdPanel() {
 
   const inviteCode = document.createElement("p");
   inviteCode.id = "household-invite-code";
-  inviteCode.style.cssText = "overflow-wrap:anywhere;";
+  inviteCode.style.cssText =
+    "font-size:12px;line-height:1.5;overflow-wrap:anywhere;";
+
+  for (const button of [createButton, joinButton]) {
+    button.style.cssText = `
+      display:block;
+      width:100%;
+      box-sizing:border-box;
+      margin:8px 0;
+      padding:9px 10px;
+      border:0;
+      border-radius:8px;
+      background:#d5e8df;
+      color:#123e32;
+      font:inherit;
+      font-size:12px;
+      font-weight:600;
+      cursor:pointer;
+    `;
+  }
 
   panel.append(
     title,
@@ -99,13 +140,20 @@ function createHouseholdPanel() {
     inviteCode
   );
 
-  appScreen.prepend(panel);
+  // Letakkan di dalam sidebar, bukan sebagai kolom baru
+  const sidebarBottom = sidebar.querySelector(".sidebar-bottom");
+  if (sidebarBottom) {
+    sidebar.insertBefore(panel, sidebarBottom);
+  } else {
+    sidebar.appendChild(panel);
+  }
 
   createButton.addEventListener("click", createHousehold);
   joinButton.addEventListener("click", joinHousehold);
 
   return panel;
 }
+
 
 function setHouseholdStatus(message) {
   const el = document.getElementById("household-status");
