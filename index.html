@@ -5,15 +5,91 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#123d32">
 <title>Our Savings — Tabungan Bersama</title>
+
 <style>
 :root{--green:#123d32;--green2:#1c5b49;--mint:#e9f2ec;--gold:#c8a96a;--cream:#faf9f5;--ink:#202923;--muted:#78817a;--line:#e6e9e4;--red:#b94c45;--white:#fff;--shadow:0 10px 35px rgba(21,51,39,.07)}
 *{box-sizing:border-box}body{margin:0;background:#f5f6f2;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.sidebar{background:var(--green);color:#fff;padding:28px 18px;display:flex;flex-direction:column;gap:28px}.brand{display:flex;align-items:center;gap:12px;padding:0 8px}.brand-mark{width:42px;height:42px;border-radius:14px;background:rgba(255,255,255,.12);display:grid;place-items:center;color:#e5d1a0;font-size:22px}.brand h1{font-size:17px;margin:0;letter-spacing:.2px}.brand p{font-size:11px;color:#b8cbc1;margin:4px 0 0}.nav-label{font-size:10px;text-transform:uppercase;letter-spacing:1.6px;color:#9db6a9;padding:0 12px;margin-bottom:8px}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#d8e4dc;text-align:left;padding:12px;border-radius:11px;display:flex;gap:12px;align-items:center;font-size:13px}.nav button .ico{width:20px;text-align:center;font-size:16px}.nav button.active,.nav button:hover{background:rgba(255,255,255,.12);color:#fff}.sidebar-bottom{margin-top:auto;border-top:1px solid rgba(255,255,255,.14);padding:16px 8px 0;color:#b8cbc1;font-size:11px;line-height:1.6}.main{min-width:0;padding:30px clamp(16px,3vw,42px) 48px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px}.eyebrow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--green2);font-weight:750}.topbar h2{font-size:26px;margin:7px 0 0;letter-spacing:-.8px}.top-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:10px 14px;border-radius:10px;font-weight:650;font-size:12px}.btn.primary{background:var(--green);color:#fff;border-color:var(--green)}.btn.gold{background:var(--gold);border-color:var(--gold);color:#fff}.btn.danger{color:var(--red);border-color:#f0d7d4}.btn.small{padding:7px 10px;font-size:11px}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}.card{background:var(--white);border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:var(--shadow);min-width:0}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;gap:8px}.stat-icon{width:34px;height:34px;border-radius:11px;background:var(--mint);display:grid;place-items:center;color:var(--green);font-size:16px}.stat-value{font-size:clamp(17px,2vw,24px);font-weight:800;letter-spacing:-.7px;margin:15px 0 7px;overflow-wrap:anywhere}.stat-foot{font-size:11px;color:var(--muted)}.positive{color:var(--green2)}.negative{color:var(--red)}.overview{grid-template-columns:1.4fr 1fr;margin-bottom:18px}.balance-card{background:var(--green);color:white;border:0;position:relative;overflow:hidden}.balance-card:after{content:"";position:absolute;width:210px;height:210px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-70px;top:-100px;box-shadow:0 0 0 25px rgba(255,255,255,.025),0 0 0 55px rgba(255,255,255,.02)}.balance-card .muted{color:#bdd0c5}.balance-card .stat-value{font-size:clamp(26px,3vw,38px);margin:13px 0}.balance-meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px}.balance-meta span{display:block;font-size:11px;color:#bdd0c5;margin-bottom:6px}.balance-meta strong{font-size:14px}.card-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:17px}.card-title h3{font-size:15px;margin:0}.sub{font-size:11px;color:var(--muted);margin-top:5px}.progress{height:8px;background:#edf0eb;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--green2);border-radius:99px;transition:width .25s}.goal-progress{margin:18px 0 12px}.goal-numbers{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted)}.goal-numbers strong{color:var(--ink)}.person-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);gap:10px}.person-row:last-child{border-bottom:0}.person{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:650}.avatar{width:34px;height:34px;border-radius:12px;background:#f1e8d5;color:#735c2f;display:grid;place-items:center;font-weight:800}.person-row strong{font-size:13px}.section{display:none}.section.active{display:block}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:4px 0 18px}.section-heading h3{font-size:20px;margin:0}.section-heading p{font-size:12px;color:var(--muted);margin:6px 0 0}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.field{display:grid;gap:7px;margin-bottom:14px}.field label{font-size:12px;font-weight:700;color:#455249}.field input,.field select,.field textarea,.toolbar input,.toolbar select{width:100%;padding:11px 12px;border:1px solid #dfe5dd;border-radius:10px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#6b9b84;box-shadow:0 0 0 3px #e8f1eb}.field textarea{min-height:75px;resize:vertical}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.span2{grid-column:span 2}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:13px}table{border-collapse:collapse;width:100%;min-width:680px;background:#fff}th,td{text-align:left;padding:13px 15px;border-bottom:1px solid #edf0eb;font-size:12px;white-space:nowrap}th{background:#f8f9f6;color:#7b857e;font-size:10px;text-transform:uppercase;letter-spacing:.7px}tbody tr:last-child td{border-bottom:0}.pill{display:inline-flex;align-items:center;padding:5px 8px;border-radius:7px;font-size:10px;font-weight:750}.pill.in{background:#e7f3eb;color:#256747}.pill.out{background:#fbece9;color:#a34039}.muted{color:var(--muted)}.empty{text-align:center;padding:35px 15px;color:var(--muted);font-size:13px}.target-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.goal-card h4{margin:0 0 5px;font-size:16px}.goal-card .goal-amount{font-size:22px;font-weight:800;margin:18px 0 4px}.goal-card .goal-desc{font-size:12px;color:var(--muted);line-height:1.6}.goal-card .goal-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:18px}.chart{height:190px;display:flex;align-items:end;gap:10px;padding:14px 2px 0}.bar-wrap{flex:1;height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:8px;min-width:0}.bar{width:min(30px,70%);min-height:3px;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,#5d9b7d,#1c5b49)}.bar-label{font-size:10px;color:var(--muted)}.bar-value{font-size:9px;color:var(--muted);height:12px}.modal-backdrop{position:fixed;inset:0;background:rgba(10,24,18,.48);display:none;align-items:center;justify-content:center;padding:16px;z-index:20}.modal-backdrop.open{display:flex}.modal{background:#fff;width:min(580px,100%);max-height:92vh;overflow:auto;border-radius:18px;padding:24px;box-shadow:0 25px 90px rgba(0,0,0,.2)}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.modal-head h3{margin:0;font-size:19px}.close{border:0;background:#f1f3ef;width:34px;height:34px;border-radius:10px;font-size:19px}.modal-actions{display:flex;justify-content:end;gap:8px;margin-top:8px}.notice{padding:12px 14px;background:#f7f2e7;color:#765d2c;border:1px solid #eee3ca;border-radius:11px;font-size:11px;line-height:1.6;margin-bottom:16px}.settings-grid{grid-template-columns:1fr 1fr}.file-input{display:none}.mobile-menu{display:none}.footer-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:18px}.toast{position:fixed;bottom:20px;right:20px;background:#163f32;color:#fff;padding:12px 16px;border-radius:11px;box-shadow:var(--shadow);font-size:12px;z-index:40;display:none}.toast.show{display:block}
 @media(max-width:1050px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.overview{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{padding:14px 16px;gap:14px}.brand{padding:0}.sidebar .nav-label,.sidebar-bottom{display:none}.nav{display:flex;overflow:auto;gap:5px}.nav button{white-space:nowrap;padding:9px 11px;font-size:11px}.nav button .ico{font-size:14px}.main{padding:20px 14px 35px}.topbar{align-items:flex-start;flex-direction:column;margin-bottom:20px}.topbar h2{font-size:23px}.top-actions{width:100%}.top-actions .btn{flex:1}.stats{gap:10px}.card{padding:15px;border-radius:14px}.stat-value{font-size:19px}.overview{grid-template-columns:1fr}.target-grid,.settings-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.span2{grid-column:auto}.section-heading{align-items:flex-start;flex-direction:column}.chart{gap:5px}.balance-meta{gap:18px}}
+
+/* Tambahan untuk halaman login */
+.hidden {
+  display: none !important;
+}
+
+.authwrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.auth {
+  width: min(430px, 100%);
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.auth .field {
+  margin-bottom: 14px;
+}
+
+.auth input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#auth-message {
+  overflow-wrap: anywhere;
+}
+
 </style>
 </head>
-<body>
-<div class="app">
+  <body>
+  <div id="auth-panel" class="authwrap">
+    <section class="card auth">
+      <h1>Our Savings</h1>
+      <p>Login untuk membuka tabunganmu.</p>
+
+      <form id="login-form">
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" required>
+        </div>
+
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" required>
+        </div>
+
+        <button class="btn primary" type="submit">Login</button>
+      </form>
+
+      <hr>
+
+      <form id="register-form">
+        <h3>Buat akun baru</h3>
+
+        <div class="field">
+          <label for="register-email">Email</label>
+          <input id="register-email" type="email" required>
+        </div>
+
+        <div class="field">
+          <label for="register-password">Password</label>
+          <input id="register-password" type="password"
+                 minlength="6" required>
+        </div>
+
+        <button class="btn primary" type="submit">Daftar</button>
+      </form>
+
+      <p id="auth-message" role="status" aria-live="polite"></p>
+    </section>
+  </div>
+
+  <div id="appScreen" class="app hidden">
   <aside class="sidebar">
     <div class="brand"><div class="brand-mark">♡</div><div><h1>Our Savings</h1><p>Small steps, shared dreams.</p></div></div>
     <div><div class="nav-label">Workspace</div><nav class="nav" id="nav">
@@ -22,6 +98,7 @@
       <button data-page="goals"><span class="ico">◎</span>Target Tabungan</button>
       <button data-page="reports"><span class="ico">▥</span>Laporan</button>
       <button data-page="settings"><span class="ico">⚙</span>Pengaturan</button>
+      <button id="logout-button" type="button">Logout</button>
     </nav></div>
     <div class="sidebar-bottom">Ruang pribadi untuk mencatat langkah kecil menuju rencana masa depan.<br><br>Data versi ini tersimpan di browser perangkat ini.</div>
   </aside>
@@ -121,5 +198,7 @@ document.getElementById('restoreFile').addEventListener('change',async e=>{const
 document.getElementById('resetBtn').addEventListener('click',()=>{if(!confirm('Yakin ingin menghapus semua transaksi, target, dan pengaturan? Tindakan ini tidak dapat dibatalkan.'))return;if(!confirm('Konfirmasi terakhir: pastikan kamu sudah mengunduh cadangan jika diperlukan.'))return;state=defaults();save();toast('Data lokal telah direset.')});
 render();
 </script>
+
+<script type="module" src="./app.js"></script>
 </body>
 </html>
